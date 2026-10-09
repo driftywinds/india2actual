@@ -6,7 +6,25 @@
 Get your Indian bank statements into [Actual Budget](https://actualbudget.org),
 with **real payee names instead of UPI reference strings**.
 
-Website: <https://india2actual.emil.ge>
+<div align="center">
+  <p>
+    <a href="https://india2actual.emil.ge"><strong>Website</strong></a>
+    &middot;
+    <a href="https://india2actual.emil.ge/convert/"><strong>Convert in your browser</strong></a>
+  </p>
+  <p>
+    <b>Pick how you want to use it:</b><br />
+    <a href="#quick-start">Command line</a> |
+    <a href="https://india2actual.emil.ge/convert/">Convert page</a> |
+    <a href="https://github.com/emilgeo/india2actual/releases/latest/download/india2actual.html">Push page (.html)</a> |
+    <a href="https://github.com/emilgeo/india2actual/releases/latest/download/india2actual-extension.zip">Chrome extension (.zip)</a>
+  </p>
+  <p>
+    <a href="https://github.com/emilgeo/india2actual/issues">Report a problem</a>
+    &middot;
+    <a href="#help-test-your-bank">Help test your bank</a>
+  </p>
+</div>
 
 ## Why this exists
 
@@ -73,8 +91,7 @@ npm install -g india2actual
 
 ## No terminal? Use the browser version
 
-The website has a Convert page (the link at the top of this page leads to the
-website). Drop a statement into it, check the result, give any unclear payee a
+The website has a Convert page (linked at the top of this page). Drop a statement into it, check the result, give any unclear payee a
 name, and download a file to import into Actual. A PDF, CSV or Excel file works,
 and a password protected PDF asks for its password.
 

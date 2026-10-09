@@ -21,7 +21,32 @@ hero:
       variant: minimal
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+## Pick how you want to use it
+
+<CardGrid>
+  <LinkCard
+    title="Convert in your browser"
+    description="Drop a statement on this site and download a file for Actual. Nothing is uploaded."
+    href="/convert/"
+  />
+  <LinkCard
+    title="Command line"
+    description="npx india2actual statement.csv, with optional push into Actual."
+    href="/docs/#quick-start"
+  />
+  <LinkCard
+    title="Push page (.html)"
+    description="One file you open from your computer. It sends statements straight into Actual."
+    href="https://github.com/emilgeo/india2actual/releases/latest/download/india2actual.html"
+  />
+  <LinkCard
+    title="Chrome extension (.zip)"
+    description="The push page in the browser's side panel, next to Actual."
+    href="https://github.com/emilgeo/india2actual/releases/latest/download/india2actual-extension.zip"
+  />
+</CardGrid>
 
 ## Why this exists
 
