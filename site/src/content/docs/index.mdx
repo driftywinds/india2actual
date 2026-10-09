@@ -23,30 +23,37 @@ hero:
 
 import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
 
-## Pick how you want to use it
+<div class="ways">
+
+## Four ways to use india2actual
+
+The same checks and the same real payee names everywhere. Pick the one that fits
+how you work.
 
 <CardGrid>
   <LinkCard
     title="Convert in your browser"
-    description="Drop a statement on this site and download a file for Actual. Nothing is uploaded."
+    description="Best if you just want a file. Drop a statement on this site and download a CSV for Actual. No install, and nothing is uploaded."
     href="/convert/"
   />
   <LinkCard
     title="Command line"
-    description="npx india2actual statement.csv, with optional push into Actual."
+    description="Best if you use a terminal. npx india2actual statement.csv, and it can push straight into Actual."
     href="/docs/#quick-start"
   />
   <LinkCard
     title="Push page (.html)"
-    description="One file you open from your computer. It sends statements straight into Actual."
+    description="Best for skipping the import step. One file you open from your computer, which sends statements straight into Actual."
     href="https://github.com/emilgeo/india2actual/releases/latest/download/india2actual.html"
   />
   <LinkCard
     title="Chrome extension (.zip)"
-    description="The push page in the browser's side panel, next to Actual."
+    description="Best if you import often. The push page in the browser's side panel, next to Actual."
     href="https://github.com/emilgeo/india2actual/releases/latest/download/india2actual-extension.zip"
   />
 </CardGrid>
+
+</div>
 
 ## Why this exists
 

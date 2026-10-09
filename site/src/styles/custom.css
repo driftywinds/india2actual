@@ -85,3 +85,24 @@ body {
     z-index: calc(var(--sl-z-index-menu) + 1);
   }
 }
+
+/* The row of ways to use the tool, set apart so visitors see there is a choice. */
+.ways {
+  margin-block: 2rem;
+  padding: 1.5rem;
+  border: 1px solid var(--sl-color-accent);
+  border-radius: 0.75rem;
+  background-color: var(--sl-color-accent-low);
+}
+
+.ways h2 {
+  margin-top: 0;
+}
+
+.ways .sl-link-card {
+  background-color: var(--sl-color-bg);
+}
+
+.ways .sl-link-card .title {
+  color: var(--sl-color-text-accent);
+}
