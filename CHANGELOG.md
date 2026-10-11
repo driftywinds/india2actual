@@ -19,7 +19,7 @@ All notable changes to this project are recorded here. The format follows
   lowercase with its digits removed.
 - The push file and the extension limit themselves to the one Actual server you
   connect to for the rest of that visit.
-- The browser pages and the extension have a Theme choice (System, Light or
+- The browser pages and the extension have a Theme choice (Auto, Light or
   Dark), remembered in the browser.
 - A browser version of the converter on the website. Drop a statement (PDF, CSV
   or Excel), check it, name unclear payees, and download one file per account.
