@@ -1,0 +1,76 @@
+---
+import Default from '@astrojs/starlight/components/Hero.astro';
+---
+
+<Default {...Astro.props}><slot /></Default>
+
+<script>
+	// The hero title starts as a made-up UPI narration and resolves into the name.
+	const TARGET = 'india2actual';
+	const RAW = 'UPI/DR/4123/IN';
+	const NARRATION = 'narration: UPI/DR/412345678901/SWIGGY/YESB';
+	const PAYEE = 'payee: india2actual';
+
+	const word = document.querySelector<HTMLElement>('.wm-hero');
+	if (word) {
+		const row = document.createElement('div');
+		row.className = 'wm-row';
+		const note = document.createElement('p');
+		note.className = 'wm-note';
+		note.setAttribute('aria-hidden', 'true');
+		const replay = document.createElement('button');
+		replay.type = 'button';
+		replay.className = 'wm-replay';
+		replay.textContent = 'Replay';
+		replay.setAttribute('aria-label', 'Replay the title animation');
+		row.append(note, replay);
+		word.closest('h1')?.after(row);
+
+		// Every letter sits in a cell as wide as its final glyph, so swapping a
+		// character never changes the width or height of the title.
+		const widths: number[] = [];
+		const render = (text: string, settled: number) => {
+			word.replaceChildren(
+				...[...text].map((char, i) => {
+					const span = document.createElement('span');
+					span.textContent = char;
+					span.className = i >= settled ? 'raw' : i === 5 ? 'wm-two' : i > 5 ? 'wm-ac' : 'wm-in';
+					const width = widths[i];
+					if (width) span.style.width = `${width}px`;
+					return span;
+				}),
+			);
+		};
+
+		let timer: ReturnType<typeof setInterval> | undefined;
+		const play = () => {
+			clearInterval(timer);
+			let settled = 0;
+			render(RAW.slice(0, TARGET.length), 0);
+			note.textContent = NARRATION;
+			timer = setInterval(() => {
+				settled++;
+				render(TARGET.slice(0, settled) + RAW.slice(settled, TARGET.length), settled);
+				if (settled >= TARGET.length) {
+					clearInterval(timer);
+					note.textContent = PAYEE;
+				}
+			}, 110);
+		};
+
+		const start = () => {
+			render(TARGET, TARGET.length);
+			[...word.children].forEach((cell) => widths.push(cell.getBoundingClientRect().width));
+			if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+				render(TARGET, TARGET.length);
+				note.textContent = PAYEE;
+				replay.hidden = true;
+			} else {
+				replay.addEventListener('click', play);
+				play();
+			}
+		};
+		// Measured once the name's font is in, or the cells would match the fallback face.
+		document.fonts.load('800 1em Wordmark').catch(() => {}).then(start);
+	}
+</script>

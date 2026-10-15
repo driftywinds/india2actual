@@ -33,3 +33,6 @@ test-results/
 playwright-report/
 # Copied in from dist-web by the site workflow.
 site/public/convert/
+
+# Copied in from web/fonts by scripts/sync-docs.mjs.
+site/public/wordmark.woff2

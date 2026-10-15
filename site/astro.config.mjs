@@ -11,7 +11,11 @@ export default defineConfig({
       title: 'india2actual',
       description:
         'Import Indian bank and credit card statements into Actual Budget, with real payee names instead of UPI reference strings.',
-      components: { PageFrame: './src/components/PageFrame.astro' },
+      components: {
+        PageFrame: './src/components/PageFrame.astro',
+        SiteTitle: './src/components/SiteTitle.astro',
+        Hero: './src/components/Hero.astro',
+      },
       customCss: ['./src/styles/custom.css'],
       sidebar: [
         { label: 'Convert in your browser', link: '/convert/' },

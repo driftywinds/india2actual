@@ -33,6 +33,7 @@ const variants = [
       // PDF.js starts its reader from a Blob.
       'worker-src blob:',
       "img-src 'none'",
+      'font-src data:',
       "connect-src 'none'",
       "form-action 'none'",
       "base-uri 'none'",
@@ -48,6 +49,7 @@ const variants = [
       `style-src ${hash(css)}`,
       'worker-src blob:',
       "img-src 'none'",
+      'font-src data:',
       // An https server, or one on this computer. Actual needs the same.
       'connect-src https: http://localhost:* http://127.0.0.1:* http://[::1]:*',
       "form-action 'none'",

@@ -73,12 +73,22 @@ function ThemePicker({ labelled }: { labelled: boolean }) {
   );
 }
 
+function Wordmark() {
+  return (
+    <>
+      <span class="wm-in">india</span>
+      <span class="wm-two">2</span>
+      <span class="wm-ac">actual</span>
+    </>
+  );
+}
+
 /** The same header as the rest of the site, shown only where the page is served as part of it. */
 function SiteHeader() {
   return (
     <header class="sitebar">
       <a class="sitebar-name" href="/">
-        india2actual
+        <Wordmark />
       </a>
       <div class="sitebar-right">
         <IconLink href="https://github.com/emilgeo/india2actual" name="github" label="GitHub" />
@@ -298,7 +308,9 @@ export function App() {
       <main>
         <header class="hero">
           {showSiteHeader ? null : <ThemePicker labelled />}
-          <h1>india2actual</h1>
+          <h1>
+            <Wordmark />
+          </h1>
           <p>
             Turn an Indian bank or credit card statement into a file Actual Budget
             can import, with real payee names.
@@ -528,7 +540,12 @@ export function App() {
       </main>
       <footer class="foot">
         <p>
-          <span>india2actual {__VERSION__}</span>
+          <span>
+            <span class="foot-name">
+              <Wordmark />
+            </span>{' '}
+            {__VERSION__}
+          </span>
           <span>Not affiliated with Actual Budget or any bank.</span>
           <span>Made by an Actual Budget lover.</span>
         </p>

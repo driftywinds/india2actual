@@ -106,3 +106,89 @@ body {
 .ways .sl-link-card .title {
   color: var(--sl-color-text-accent);
 }
+
+/* The split-colour wordmark: india in ink, the 2 in saffron, actual in Actual's purple. */
+:root {
+  --wm-two: #f2a65a;
+  --wm-ac: #b37cf2;
+}
+
+:root[data-theme='light'] {
+  --wm-two: #e8892b;
+  --wm-ac: #8719e0;
+}
+
+.site-title {
+  text-decoration: none;
+  white-space: nowrap;
+  font-size: var(--sl-text-h4);
+}
+
+@font-face {
+  font-family: 'Wordmark';
+  src: url('/wordmark.woff2') format('woff2');
+  font-weight: 800;
+  font-display: swap;
+}
+
+.wm {
+  font-family: 'Wordmark', var(--sl-font-system);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.wm-in {
+  color: var(--sl-color-white);
+}
+
+.wm-two {
+  color: var(--wm-two);
+}
+
+.wm-ac {
+  color: var(--wm-ac);
+}
+
+.wm-hero span {
+  display: inline-block;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.wm-hero .raw {
+  color: var(--sl-color-gray-4);
+}
+
+.wm-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+}
+
+.wm-note {
+  margin: 0;
+  min-height: 1.5em;
+  font-family: var(--sl-font-system-mono);
+  font-size: var(--sl-text-sm);
+  color: var(--sl-color-gray-3);
+}
+
+.wm-replay {
+  padding: 0.125rem 0.75rem;
+  border: 1px solid var(--sl-color-hairline);
+  border-radius: 999px;
+  background: none;
+  color: var(--sl-color-text-accent);
+  font: inherit;
+  font-size: var(--sl-text-sm);
+  cursor: pointer;
+}
+
+.wm-replay:hover {
+  border-color: var(--sl-color-text-accent);
+}
+
+.wm-replay[hidden] {
+  display: none;
+}
