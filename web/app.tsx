@@ -83,6 +83,33 @@ function Wordmark() {
   );
 }
 
+/** The same links as the site's sidebar, shown beside the page where it is served. */
+function SideNav() {
+  const links = [
+    { label: 'Documentation', href: '/docs/' },
+    { label: 'Changelog', href: '/changelog/' },
+    { label: 'Privacy', href: '/privacy/' },
+  ];
+  return (
+    <aside class="sidenav">
+      <nav aria-label="Main">
+        <ul>
+          <li>
+            <a href="/convert/" aria-current="page">
+              Convert in your browser
+            </a>
+          </li>
+          {links.map(({ label, href }) => (
+            <li>
+              <a href={href}>{label}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </aside>
+  );
+}
+
 /** The same header as the rest of the site, shown only where the page is served as part of it. */
 function SiteHeader() {
   return (
@@ -305,6 +332,7 @@ export function App() {
   return (
     <>
       {showSiteHeader ? <SiteHeader /> : null}
+      {showSiteHeader ? <SideNav /> : null}
       <main>
         <header class="hero">
           {showSiteHeader ? null : <ThemePicker labelled />}

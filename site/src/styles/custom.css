@@ -231,3 +231,25 @@ body {
     padding-block: 0.375rem;
   }
 }
+
+/* The four home page buttons sit as two rows of two, lined up in columns. */
+@media (min-width: 40rem) {
+  .hero .actions {
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    justify-content: center;
+    gap: 1rem 1.5rem;
+  }
+
+  /* Below this width the hero text is centred, so the buttons are too. */
+  @media (min-width: 50rem) {
+    .hero .actions {
+      justify-content: start;
+    }
+  }
+
+  /* The plain buttons get the filled ones' side padding, so the text lines up. */
+  .hero .actions .minimal {
+    padding-inline: 1.25rem;
+  }
+}

@@ -208,6 +208,13 @@ test.describe('the convert page', () => {
   });
 });
 
+test.describe('the page icon', () => {
+  test('is carried inside the page, so no request is needed', async ({ page }) => {
+    const icon = page.locator('link[rel=icon]');
+    await expect(icon).toHaveAttribute('href', /^data:image\/svg\+xml,/);
+  });
+});
+
 test.describe('the site header', () => {
   test('is left out of a page opened from disk', async ({ page }) => {
     await expect(page.locator('header.sitebar')).toHaveCount(0);
@@ -230,6 +237,23 @@ test.describe('the site header', () => {
     await expect(footer).toContainText('Made by an Actual Budget lover');
     await expect(footer.getByRole('link', { name: 'Report a problem' })).toBeVisible();
     await expect(footer.getByRole('link', { name: 'Fingerprint of this page' })).toBeVisible();
+  });
+
+  test('shows the site sidebar beside the page when served, and not from disk', async ({ page }) => {
+    await expect(page.locator('aside.sidenav')).toBeHidden();
+    const html = readFileSync(join(root, 'dist-web', 'india2actual-convert.html'));
+    await page.route('http://site.test/convert/', route =>
+      route.fulfill({ body: html, contentType: 'text/html' }),
+    );
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.goto('http://site.test/convert/');
+    const nav = page.getByRole('navigation', { name: 'Main' });
+    await expect(nav.getByRole('link', { name: 'Convert in your browser' })).toHaveAttribute(
+      'aria-current',
+      'page',
+    );
+    await expect(nav.getByRole('link', { name: 'Documentation' })).toHaveAttribute('href', '/docs/');
+    await expect(nav.getByRole('link', { name: 'Privacy' })).toHaveAttribute('href', '/privacy/');
   });
 
   test('keeps the footer at the bottom of a short page', async ({ page }) => {
@@ -307,7 +331,10 @@ test.describe('the network policy', () => {
 
   test('loads no script, style or image from outside the file', async ({ page }) => {
     const external = await page.evaluate(
-      () => document.querySelectorAll('script[src], link[href], img[src], iframe').length,
+      () =>
+        [...document.querySelectorAll('script[src], link[href], img[src], iframe')].filter(
+          element => !(element.getAttribute('href') ?? '').startsWith('data:'),
+        ).length,
     );
 
     expect(external).toBe(0);

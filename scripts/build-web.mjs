@@ -47,7 +47,8 @@ const variants = [
       `style-src ${hash(css)}`,
       // PDF.js starts its reader from a Blob.
       'worker-src blob:',
-      "img-src 'none'",
+      // The page's own icon, written into it as a data URI.
+      'img-src data:',
       'font-src data:',
       "connect-src 'none'",
       "form-action 'none'",
@@ -65,7 +66,8 @@ const variants = [
       `script-src ${hash(js)} 'wasm-unsafe-eval'`,
       `style-src ${hash(css)}`,
       'worker-src blob:',
-      "img-src 'none'",
+      // The page's own icon, written into it as a data URI.
+      'img-src data:',
       'font-src data:',
       // An https server, or one on this computer. Actual needs the same.
       'connect-src https: http://localhost:* http://127.0.0.1:* http://[::1]:*',
