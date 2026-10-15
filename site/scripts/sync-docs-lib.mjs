@@ -51,10 +51,13 @@ function dropTitleAndBadges(markdown) {
 
 function absoluteLinks(markdown) {
   return outsideFences(markdown, (line) =>
-    line.replace(
-      /\]\((?!https?:|#|mailto:|\/)([^)\s]+)\)/g,
-      `](${REPO}/blob/main/$1)`,
-    ),
+    line
+      // Files the site itself serves, so the page makes no request to GitHub.
+      .replaceAll('src="site/public/', 'src="/')
+      .replace(
+        /\]\((?!https?:|#|mailto:|\/)([^)\s]+)\)/g,
+        `](${REPO}/blob/main/$1)`,
+      ),
   );
 }
 

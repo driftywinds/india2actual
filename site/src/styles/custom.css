@@ -193,6 +193,20 @@ body {
   display: none;
 }
 
+.demo {
+  margin: 0 0 2rem;
+  text-align: center;
+}
+
+.demo img {
+  display: block;
+  margin-inline: auto;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--sl-color-hairline);
+  border-radius: 0.75rem;
+}
+
 @media (max-width: 40rem) {
   .site-footer {
     flex-direction: column;
