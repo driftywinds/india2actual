@@ -6,6 +6,14 @@ All notable changes to this project are recorded here. The format follows
 
 ## Unreleased
 
+## 0.5.1 - 2026-10-15
+
+### Changed
+
+- Website updates.
+- New branding on the website, the browser pages and the extension.
+- Dependency updates.
+
 ## 0.5.0 - 2026-10-11
 
 ### Added
