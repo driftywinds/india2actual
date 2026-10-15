@@ -17,6 +17,8 @@ const readme = [
   '```',
   '',
   '[site](https://example.org/page) and [mail](mailto:a@example.org)',
+  '',
+  '<img src="site/public/demo.gif" alt="demo">',
 ].join('\n');
 
 describe('renderReadme', () => {
@@ -48,6 +50,10 @@ describe('renderReadme', () => {
     expect(output).toContain('[the limits](#limitations)');
     expect(output).toContain('[site](https://example.org/page)');
     expect(output).toContain('[mail](mailto:a@example.org)');
+  });
+
+  it('points images the site serves at the site, not at GitHub', () => {
+    expect(output).toContain('<img src="/demo.gif" alt="demo">');
   });
 
   it('does not rewrite anything inside a code fence', () => {

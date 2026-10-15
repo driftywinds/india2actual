@@ -1,19 +1,20 @@
 ---
-title: india2actual
+title: Indian bank statements into Actual Budget
 description: Import Indian bank and credit card statements into Actual Budget, with real payee names instead of UPI reference strings.
 template: splash
 hero:
+  title: '<span class="sr-only">india2actual</span><span class="wm wm-hero" aria-hidden="true"><span class="wm-in">india</span><span class="wm-two">2</span><span class="wm-ac">actual</span></span>'
   image:
     alt: A messy bank statement turning into a clean, checked transaction
     file: ../../assets/hero.svg
   tagline: Get your Indian bank statements into Actual Budget, with real payee names instead of UPI reference strings.
   actions:
-    - text: Get started
-      link: /docs/#quick-start
-      icon: right-arrow
     - text: Convert in your browser
       link: /convert/
       icon: laptop
+    - text: More ways to use it
+      link: '#more-ways-to-use-india2actual'
+      icon: down-caret
       variant: secondary
     - text: View on GitHub
       link: https://github.com/emilgeo/india2actual
@@ -23,19 +24,18 @@ hero:
 
 import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
 
+<p class="demo">
+  <img src="/demo.gif" width="680" alt="A sample statement dropped on the Convert page: the balance check passes, UPI lines become payee names, one payee is named by hand, and a file for Actual is downloaded." />
+</p>
+
 <div class="ways">
 
-## Four ways to use india2actual
+## More ways to use india2actual
 
-The same checks and the same real payee names everywhere. Pick the one that fits
-how you work.
+The Convert page is the quickest start. These give the same checks and the same
+real payee names, and fit other ways of working.
 
 <CardGrid>
-  <LinkCard
-    title="Convert in your browser"
-    description="Best if you just want a file. Drop a statement on this site and download a CSV for Actual. No install, and nothing is uploaded."
-    href="/convert/"
-  />
   <LinkCard
     title="Command line"
     description="Best if you use a terminal. npx india2actual statement.csv, and it can push straight into Actual."

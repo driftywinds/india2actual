@@ -1,33 +1,33 @@
-/* Warm paper and ink neutrals with a teal accent. */
+/* Navy and lavender neutrals with a purple accent. */
 :root {
-  --sl-color-white: #f2f1ed;
-  --sl-color-gray-1: #e4e2dc;
-  --sl-color-gray-2: #cfcec9;
-  --sl-color-gray-3: #9a9ca6;
-  --sl-color-gray-4: #6b6d76;
-  --sl-color-gray-5: #26272c;
-  --sl-color-gray-6: #1a1b20;
-  --sl-color-black: #101114;
+  --sl-color-white: #f0f4f8;
+  --sl-color-gray-1: #d9e2ec;
+  --sl-color-gray-2: #bcccdc;
+  --sl-color-gray-3: #9fb3c8;
+  --sl-color-gray-4: #627d98;
+  --sl-color-gray-5: #243b53;
+  --sl-color-gray-6: #102a43;
+  --sl-color-black: #0b1726;
 
-  --sl-color-accent-low: #0b3b38;
-  --sl-color-accent: #14b8a6;
-  --sl-color-accent-high: #99f6e4;
+  --sl-color-accent-low: #2c2350;
+  --sl-color-accent: #9a7cf0;
+  --sl-color-accent-high: #d9c2fa;
 }
 
 :root[data-theme='light'] {
-  --sl-color-white: #15161b;
-  --sl-color-gray-1: #25262c;
-  --sl-color-gray-2: #3f4048;
-  --sl-color-gray-3: #5b5d66;
-  --sl-color-gray-4: #8a8c94;
-  --sl-color-gray-5: #e4e2dc;
-  --sl-color-gray-6: #efeeea;
-  --sl-color-gray-7: #f3f2ee;
-  --sl-color-black: #f7f6f3;
+  --sl-color-white: #102a43;
+  --sl-color-gray-1: #243b53;
+  --sl-color-gray-2: #334e68;
+  --sl-color-gray-3: #627d98;
+  --sl-color-gray-4: #829ab1;
+  --sl-color-gray-5: #e2e0ec;
+  --sl-color-gray-6: #ebe9f3;
+  --sl-color-gray-7: #ffffff;
+  --sl-color-black: #f4f3f8;
 
-  --sl-color-accent-low: #ccfbf1;
-  --sl-color-accent: #0f766e;
-  --sl-color-accent-high: #134e4a;
+  --sl-color-accent-low: #efe4fc;
+  --sl-color-accent: #5c3dbb;
+  --sl-color-accent-high: #3b2680;
 }
 
 /* A footer that matches the header and stays at the bottom of short pages. */
@@ -105,4 +105,129 @@ body {
 
 .ways .sl-link-card .title {
   color: var(--sl-color-text-accent);
+}
+
+/* The split-colour wordmark: india in ink, the 2 in saffron, actual in Actual's purple. */
+:root {
+  --wm-two: #f2a65a;
+  --wm-ac: #b37cf2;
+}
+
+:root[data-theme='light'] {
+  --wm-two: #e8892b;
+  --wm-ac: #8719e0;
+}
+
+.site-title {
+  text-decoration: none;
+  white-space: nowrap;
+  font-size: var(--sl-text-h4);
+}
+
+@font-face {
+  font-family: 'Wordmark';
+  src: url('/wordmark.woff2') format('woff2');
+  font-weight: 800;
+  font-display: swap;
+}
+
+.wm {
+  font-family: 'Wordmark', var(--sl-font-system);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.wm-in {
+  color: var(--sl-color-white);
+}
+
+.wm-two {
+  color: var(--wm-two);
+}
+
+.wm-ac {
+  color: var(--wm-ac);
+}
+
+.wm-hero span {
+  display: inline-block;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.wm-hero .raw {
+  color: var(--sl-color-gray-4);
+}
+
+.wm-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+}
+
+.wm-note {
+  margin: 0;
+  min-height: 1.5em;
+  font-family: var(--sl-font-system-mono);
+  font-size: var(--sl-text-sm);
+  color: var(--sl-color-gray-3);
+}
+
+.wm-replay {
+  padding: 0.125rem 0.75rem;
+  border: 1px solid var(--sl-color-hairline);
+  border-radius: 999px;
+  background: none;
+  color: var(--sl-color-text-accent);
+  font: inherit;
+  font-size: var(--sl-text-sm);
+  cursor: pointer;
+}
+
+.wm-replay:hover {
+  border-color: var(--sl-color-text-accent);
+}
+
+.wm-replay[hidden] {
+  display: none;
+}
+
+.demo {
+  margin: 0 0 2rem;
+  text-align: center;
+}
+
+.demo img {
+  display: block;
+  margin-inline: auto;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--sl-color-hairline);
+  border-radius: 0.75rem;
+}
+
+@media (max-width: 40rem) {
+  .site-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .site-footer p {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .site-footer nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.25rem 1rem;
+    width: 100%;
+    margin-inline-start: 0;
+  }
+
+  .site-footer nav a {
+    padding-block: 0.375rem;
+  }
 }

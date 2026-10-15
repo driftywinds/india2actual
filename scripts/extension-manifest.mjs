@@ -10,6 +10,7 @@ export const EXTENSION_POLICY = [
   "default-src 'none'",
   "script-src 'self' 'wasm-unsafe-eval'",
   "style-src 'self'",
+  'font-src data:',
   'connect-src https: http://localhost:* http://127.0.0.1:*',
   "object-src 'none'",
   "base-uri 'none'",

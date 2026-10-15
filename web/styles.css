@@ -1,63 +1,76 @@
+@font-face {
+  font-family: 'Wordmark';
+  src: url(__WORDMARK_FONT__) format('woff2');
+  font-weight: 800;
+  font-display: swap;
+}
+
 :root {
-  --paper: #f7f6f3;
+  --paper: #f4f3f8;
   --panel: #ffffff;
-  --ink: #15161b;
-  --ink-soft: #5b5d66;
-  --line: #e4e2dc;
-  --accent: #0f766e;
+  --ink: #102a43;
+  --ink-soft: #627d98;
+  --line: #e2e0ec;
+  --accent: #5c3dbb;
   --accent-ink: #ffffff;
-  --accent-soft: #ccfbf1;
+  --accent-soft: #efe4fc;
   --good: #14705a;
   --good-soft: #d9f4ea;
   --bad: #a4262c;
   --bad-soft: #fbe3e4;
   --warn-soft: #fdf1d3;
-  --nav: #f3f2ee;
-  --nav-line: #efeeea;
-  --brand: #0f766e;
+  --nav: #ffffff;
+  --nav-line: #ebe9f3;
+  --brand: #5c3dbb;
+  --wm-two: #e8892b;
+  --wm-ac: #8719e0;
   --radius: 10px;
   color-scheme: light dark;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) {
-    --paper: #101114;
-    --panel: #1a1b20;
-    --ink: #f2f1ed;
-    --ink-soft: #9a9ca6;
-    --line: #2f3037;
-    --accent: #14b8a6;
-    --accent-ink: #04201d;
-    --accent-soft: #0b3b38;
+    --paper: #0b1726;
+    --panel: #102a43;
+    --ink: #f0f4f8;
+    --ink-soft: #9fb3c8;
+    --line: #243b53;
+    --accent: #9a7cf0;
+    --accent-ink: #0b1726;
+    --accent-soft: #2c2350;
     --good: #5fd3ad;
     --good-soft: #0f3326;
     --bad: #ff8a8f;
     --bad-soft: #3d1a1c;
     --warn-soft: #3a2f12;
-    --nav: #1a1b20;
-    --nav-line: #101114;
-    --brand: #99f6e4;
+    --nav: #102a43;
+    --nav-line: #0b1726;
+    --brand: #d9c2fa;
+    --wm-two: #f2a65a;
+    --wm-ac: #b37cf2;
     color-scheme: dark;
   }
 }
 
 :root[data-theme='dark'] {
-  --paper: #101114;
-  --panel: #1a1b20;
-  --ink: #f2f1ed;
-  --ink-soft: #9a9ca6;
-  --line: #2f3037;
-  --accent: #14b8a6;
-  --accent-ink: #04201d;
-  --accent-soft: #0b3b38;
+  --paper: #0b1726;
+  --panel: #102a43;
+  --ink: #f0f4f8;
+  --ink-soft: #9fb3c8;
+  --line: #243b53;
+  --accent: #9a7cf0;
+  --accent-ink: #0b1726;
+  --accent-soft: #2c2350;
   --good: #5fd3ad;
   --good-soft: #0f3326;
   --bad: #ff8a8f;
   --bad-soft: #3d1a1c;
   --warn-soft: #3a2f12;
-  --nav: #1a1b20;
-  --nav-line: #101114;
-  --brand: #99f6e4;
+  --nav: #102a43;
+  --nav-line: #0b1726;
+  --brand: #d9c2fa;
+  --wm-two: #f2a65a;
+  --wm-ac: #b37cf2;
   color-scheme: dark;
 }
 
@@ -127,6 +140,25 @@ h4 {
   font-weight: 600;
   line-height: 1.2;
   text-decoration: none;
+}
+
+.wm-in {
+  color: var(--ink);
+}
+
+.wm-two {
+  color: var(--wm-two);
+}
+
+.wm-ac {
+  color: var(--wm-ac);
+}
+
+.sitebar-name,
+.hero h1 {
+  font-family: 'Wordmark', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.01em;
 }
 
 .sitebar-right {
@@ -539,6 +571,38 @@ select:focus-visible {
   flex-wrap: wrap;
   gap: 0.25rem 1.25rem;
   margin-inline-start: auto;
+}
+
+@media (max-width: 40rem) {
+  .foot {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding-inline: 1rem;
+  }
+
+  .foot p {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .foot nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.25rem 1rem;
+    width: 100%;
+    margin-inline-start: 0;
+  }
+
+  .foot nav a {
+    padding-block: 0.375rem;
+  }
+}
+
+.foot-name {
+  font-family: 'Wordmark', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
 }
 
 .foot a {

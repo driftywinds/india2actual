@@ -42,9 +42,19 @@ export async function buildWorker() {
   return result.outputFiles[0]?.text ?? '';
 }
 
+// The wordmark font holds only the letters of the name, so it is inlined as a
+// data URI and the page still makes no request.
+const wordmarkFont = `data:font/woff2;base64,${readFileSync(
+  resolve(root, 'web/fonts/wordmark.woff2'),
+).toString('base64')}`;
+
 export async function buildCss() {
+  const css = readFileSync(resolve(root, 'web/styles.css'), 'utf8').replace(
+    '__WORDMARK_FONT__',
+    wordmarkFont,
+  );
   return (
-    await transform(readFileSync(resolve(root, 'web/styles.css'), 'utf8'), {
+    await transform(css, {
       loader: 'css',
       minify: true,
     })

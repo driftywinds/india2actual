@@ -6,16 +6,19 @@
 Get your Indian bank statements into [Actual Budget](https://actualbudget.org),
 with **real payee names instead of UPI reference strings**.
 
+<p align="center">
+  <img src="site/public/demo.gif" width="680" alt="A sample statement dropped on the Convert page: the balance check passes, UPI lines become payee names, one payee is named by hand, and a file for Actual is downloaded.">
+</p>
+
 <div align="center">
   <p>
-    <a href="https://india2actual.emil.ge"><strong>Website</strong></a>
-    &middot;
     <a href="https://india2actual.emil.ge/convert/"><strong>Convert in your browser</strong></a>
+    &middot;
+    <a href="https://india2actual.emil.ge"><strong>Website</strong></a>
   </p>
   <p>
-    <b>Pick how you want to use it:</b><br />
+    <b>More ways to use it:</b><br />
     <a href="#quick-start">Command line</a> |
-    <a href="https://india2actual.emil.ge/convert/">Convert page</a> |
     <a href="https://github.com/emilgeo/india2actual/releases/latest/download/india2actual.html">Push page (.html)</a> |
     <a href="https://github.com/emilgeo/india2actual/releases/latest/download/india2actual-extension.zip">Chrome extension (.zip)</a>
   </p>

@@ -22,9 +22,24 @@ const outDir = resolve(root, 'dist-web');
 const worker = await buildWorker();
 const css = await buildCss();
 
+// What a search engine or a link preview shows for the hosted convert page.
+const convertTitle = 'Convert Indian bank statements for Actual Budget | india2actual';
+const convertDescription =
+  'Drop an Indian bank or credit card statement (PDF, CSV or Excel) and download a file Actual Budget can import, with real payee names. It runs in your browser and nothing is uploaded.';
+const convertHead = [
+  `<meta name="description" content="${convertDescription}">`,
+  '<meta property="og:type" content="website">',
+  '<meta property="og:site_name" content="india2actual">',
+  `<meta property="og:title" content="${convertTitle}">`,
+  `<meta property="og:description" content="${convertDescription}">`,
+  '<meta name="twitter:card" content="summary_large_image">',
+].join('\n');
+
 const variants = [
   {
     file: 'india2actual-convert.html',
+    title: convertTitle,
+    head: `\n${convertHead}`,
     push: false,
     policy: js => [
       "default-src 'none'",
@@ -33,6 +48,7 @@ const variants = [
       // PDF.js starts its reader from a Blob.
       'worker-src blob:',
       "img-src 'none'",
+      'font-src data:',
       "connect-src 'none'",
       "form-action 'none'",
       "base-uri 'none'",
@@ -40,6 +56,8 @@ const variants = [
   },
   {
     file: 'india2actual.html',
+    title: 'india2actual',
+    head: '',
     push: true,
     policy: js => [
       "default-src 'none'",
@@ -48,6 +66,7 @@ const variants = [
       `style-src ${hash(css)}`,
       'worker-src blob:',
       "img-src 'none'",
+      'font-src data:',
       // An https server, or one on this computer. Actual needs the same.
       'connect-src https: http://localhost:* http://127.0.0.1:* http://[::1]:*',
       "form-action 'none'",
@@ -68,6 +87,8 @@ for (const variant of variants) {
 
   const html = readFileSync(resolve(root, 'web/index.template.html'), 'utf8')
     .replace('__CSP__', variant.policy(js).join('; '))
+    .replace('__TITLE__', variant.title)
+    .replace('__HEAD__', () => variant.head)
     .replace('__CSS__', () => css)
     .replace('__JS__', () => js);
 
