@@ -58,12 +58,12 @@ export function zip(files) {
 }
 
 /**
- * A square icon: a teal rounded tile with a white arrow pointing right, like a
+ * A square icon: a purple rounded tile with a white arrow pointing right, like a
  * statement going into a budget. Drawn at 4x and averaged for smooth edges.
  */
 export function pngIcon(size) {
   const samples = 4;
-  const teal = [0x0f, 0x76, 0x6e];
+  const purple = [0x5c, 0x3d, 0xbb];
   const inside = (x, y) => {
     // Rounded square.
     const r = 0.22;
@@ -101,7 +101,7 @@ export function pngIcon(size) {
       const mix = tile ? white / tile : 0;
       const at = y * (size * 4 + 1) + 1 + x * 4;
       for (let channel = 0; channel < 3; channel += 1) {
-        raw[at + channel] = Math.round((teal[channel] ?? 0) * (1 - mix) + 255 * mix);
+        raw[at + channel] = Math.round((purple[channel] ?? 0) * (1 - mix) + 255 * mix);
       }
       raw[at + 3] = Math.round(cover * 255);
     }
