@@ -1,0 +1,47 @@
+name: Canary
+
+# Runs the push path against the newest published Actual API and sync server,
+# which fresh installs of this package pick up, so a breaking release shows up
+# here before it reaches users.
+on:
+  schedule:
+    - cron: '17 5 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  newest-actual:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v7
+      - name: Set up Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Build
+        run: npm run build
+      - name: Install the newest Actual API and sync server
+        run: npm install --no-save --no-package-lock @actual-app/api@latest @actual-app/sync-server@latest
+      - name: Show the versions under test
+        run: npm ls @actual-app/api @actual-app/sync-server
+      - name: Start the sync server
+        run: |
+          mkdir "$RUNNER_TEMP/actual-server"
+          ACTUAL_PORT=5006 ACTUAL_DATA_DIR="$RUNNER_TEMP/actual-server" \
+            npx actual-server > "$RUNNER_TEMP/actual-server.log" 2>&1 &
+          for attempt in $(seq 1 60); do
+            curl -fs http://localhost:5006/health && break
+            sleep 1
+          done
+          curl -fs http://localhost:5006/health
+      - name: Push invented statements and check the result
+        run: node canary/run.mjs
+      - name: Show the sync server log
+        if: failure()
+        run: cat "$RUNNER_TEMP/actual-server.log"
